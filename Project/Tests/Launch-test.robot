@@ -3,20 +3,27 @@ Documentation    This Test Will Launch NaukariGulf Website
 
 ## Library Files
 Library           SeleniumLibrary
+Library    RPA.Windows
+
+
+Test Setup           Open Browser To Home Page    ${Browser}
+Test Teardown        Close Browser
 
 ## Resource Files
-Resource    ../Keywords/common-keywords.robot
+Resource         ../Keywords/common-keywords.robot
+Resource         ../PageObjects/global-variables.robot
+Resource         ../PageObjects/launch-test-po.robot
 
 
 *** Test Cases ***
 Launch NaukariGulf Url
-    Open Browser To Login Page
-    [Teardown]    Close Browser
-
+    Click Element    ${loginBtn}
 
 *** Keywords ***
-Open Browser To Login Page
-    Open Browser    https://www.naukrigulf.com/
-    Sleep    0.2s
+Open Browser To Home Page
+    [Arguments]    ${browser}
+    Open Browser    ${URL}    ${browser}
+    Maximize Browser Window
+    Sleep    0.15s
     Wait For Page Load
-    Title Should Be    Jobs in Gulf - Jobs in Middle East - Job Search - Job Vacancies - Naukrigulf.com
+    Title Should Be    ${webTitle}

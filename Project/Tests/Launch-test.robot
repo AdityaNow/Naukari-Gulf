@@ -18,6 +18,11 @@ Resource         ../PageObjects/launch-test-po.robot
 *** Test Cases ***
 Launch NaukariGulf Url
     Click Element    ${loginBtn}
+    Wait For Page Load
+    Click Element    ${enterEmailIdInput}
+    Input Text    ${enterEmailIdInput}    adityamali1208@gmail.com
+    Input Text    ${enterPassInput}    adityamali1208@gmail.com
+
 
 *** Keywords ***
 Open Browser To Home Page

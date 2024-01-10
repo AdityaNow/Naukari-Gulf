@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    This Test Will Launch NaukariGulf Website
+Documentation    This Test Will Search NaukariGulf Website
 
 ## Library Files
 Library           SeleniumLibrary
@@ -7,31 +7,26 @@ Library           RPA.Windows
 Library           OperatingSystem
 Library           ../Keywords/config-variables.py
 
+Resource          ../Keywords/session-keywords.robot
+Resource          ../PageObjects/search-test-po.robot
+
+
 Test Setup           Open Browser To Home Page    ${BROWSER}
 Test Teardown        Close Browser
 
-## Resource Files
-Resource         ../Keywords/common-keywords.robot
-Resource         ../PageObjects/global-variables.robot
-Resource         ../PageObjects/launch-test-po.robot
-Resource         ../Keywords/session-keywords.robot
-
 
 *** Test Cases ***
-Launch NaukariGulf Url
+
+Search Bar Test
 # Open Login Window
     Click Element    ${loginBtn}
     Wait For Page Load
 # Get Credentials From Config File
     ${user}=    get_config_value    Login    Username    Project/Utility/config.ini
     ${pass}=    get_config_value    Login    Password    Project/Utility/config.ini
-# Check Type Of Input for Username & Enter Username
-    ${usrType}    Get Element Attribute    ${enterEmailIdInput}    type
-    Should Be Equal As Strings    ${usrType}    email
+# Enter Username
     Input Text    ${enterEmailIdInput}    ${user}
-# Check Type Of Input for Password & Enter Password
-    ${passType}    Get Element Attribute    ${enterPassInput}    type
-    Should Be Equal As Strings    ${passType}    password
+# Enter Password
     Input Text    ${enterPassInput}    ${pass}
     Click Element   ${loginSubmitBtn}
 # Wait For Page To Load
@@ -40,3 +35,13 @@ Launch NaukariGulf Url
     Wait Until Element Is Enabled    ${profileNameSpan}
     ${profileName}    SeleniumLibrary.Get Text    ${profileNameSpan}
     Should Be Equal As Strings    ${profileName}    ${PROFILE}
+# Click Search Button
+    Wait Until Element Is Enabled    ${searchJobsBtn}
+    Click Element    ${searchJobsBtn}
+    Sleep    3s
+    Wait Until Element Is Enabled    ${keywordsInput}
+    Click Element    ${keywordsInput}
+    Input Text    ${keywordsInput}    Ceo
+    Sleep    2s
+    Click Element    ${searchJobsInput}
+    Sleep    10s

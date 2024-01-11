@@ -5,7 +5,6 @@ Documentation    This Test Will Search NaukariGulf Website
 Library           SeleniumLibrary
 Library           RPA.Windows
 Library           OperatingSystem
-Library           ../Keywords/config-variables.py
 
 Resource          ../Keywords/session-keywords.robot
 Resource          ../PageObjects/search-test-po.robot
@@ -18,23 +17,7 @@ Test Teardown        Close Browser
 *** Test Cases ***
 
 Search Bar Test
-# Open Login Window
-    Click Element    ${loginBtn}
-    Wait For Page Load
-# Get Credentials From Config File
-    ${user}=    get_config_value    Login    Username    Project/Utility/config.ini
-    ${pass}=    get_config_value    Login    Password    Project/Utility/config.ini
-# Enter Username
-    Input Text    ${enterEmailIdInput}    ${user}
-# Enter Password
-    Input Text    ${enterPassInput}    ${pass}
-    Click Element   ${loginSubmitBtn}
-# Wait For Page To Load
-    Wait For Page Load
-# Validate Successful Login
-    Wait Until Element Is Enabled    ${profileNameSpan}
-    ${profileName}    SeleniumLibrary.Get Text    ${profileNameSpan}
-    Should Be Equal As Strings    ${profileName}    ${PROFILE}
+    Login To NaukariGulf
 # Click Search Button
     Wait Until Element Is Enabled    ${searchJobsBtn}
     Click Element    ${searchJobsBtn}
@@ -44,4 +27,4 @@ Search Bar Test
     Input Text    ${keywordsInput}    Ceo
     Sleep    2s
     Click Element    ${searchJobsInput}
-    Sleep    10s
+    Sleep    2s

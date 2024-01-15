@@ -10,7 +10,7 @@ Test Setup           Open Browser To Home Page    ${BROWSER}
 Test Teardown        Close Browser
 
 ## Resource Files
-Resource         ../Keywords/common-keywords.robot
+Resource         ../Keywords/generic-keywords.robot
 Resource         ../PageObjects/global-variables.robot
 Resource         ../PageObjects/launch-test-po.robot
 Resource         ../Keywords/session-keywords.robot

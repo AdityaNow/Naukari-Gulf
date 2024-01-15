@@ -2,7 +2,7 @@
 Library     SeleniumLibrary
 Library     ../Keywords/config-variables.py
 
-Resource    common-keywords.robot
+Resource    generic-keywords.robot
 Resource    ../PageObjects/global-variables.robot
 Resource    ../PageObjects/launch-test-po.robot
 

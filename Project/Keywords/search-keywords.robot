@@ -10,7 +10,7 @@ Resource          ../PageObjects/search-test-po.robot
 Click Search Button
     Wait Until Element Is Enabled    ${searchJobsBtn}
     Click Element    ${searchJobsBtn}
-    Sleep    1.5s
+    Sleep    1s
 
 Input keywords In SearchBox
     [Arguments]    ${input}

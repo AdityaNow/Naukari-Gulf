@@ -21,5 +21,8 @@ Search Bar Test
     Login To NaukariGulf
 # Click Search Button
     Click Search Button
-    Input keywords In SearchBox    Ceo
+    ${key}=    get_config_value    TestData    keywd    Project/Utility/config.ini
+    ${location}=    get_config_value    TestData    loc    Project/Utility/config.ini
+    Input keywords In SearchBox    ${key}    ${location}
     Search Job
+    Verify Search Results

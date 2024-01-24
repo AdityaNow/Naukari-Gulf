@@ -19,5 +19,5 @@ Test Teardown        Close Browser
 
 Social Media Links Test
     Login To NaukariGulf
-    Sleep    5s
-    Get Social Media Footer Links
+    Sleep    1s
+    Verify Social Media Footer Links
